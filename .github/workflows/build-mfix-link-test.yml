@@ -30,15 +30,15 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MFIX-Link-Test-debug-apk
+          name: MFIX-Link-Test-accessibility-probe
           path: android-link-test/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
       - name: Publish installable APK release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: mfix-link-test-v1.0.0
-          name: MFIX Link Test 1.0.0
+          tag_name: mfix-link-test-v1.1.0
+          name: MFIX Link Test 1.1.0 – Accessibility Probe
           prerelease: true
           make_latest: false
           files: android-link-test/app/build/outputs/apk/debug/app-debug.apk
