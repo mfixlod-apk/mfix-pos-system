@@ -1,4 +1,4 @@
-name: Build MFIX Link Test APK
+name: Build and publish MFIX Link Test APK
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
       - ".github/workflows/build-mfix-link-test.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -27,10 +27,18 @@ jobs:
           gradle-version: "8.7"
       - name: Build debug APK
         run: gradle -p android-link-test assembleDebug
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: MFIX-Link-Test-debug-apk
           path: android-link-test/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
+      - name: Publish installable APK release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: mfix-link-test-v1.0.0
+          name: MFIX Link Test 1.0.0
+          prerelease: true
+          make_latest: false
+          files: android-link-test/app/build/outputs/apk/debug/app-debug.apk
