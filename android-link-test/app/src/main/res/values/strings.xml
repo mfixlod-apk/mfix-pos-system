@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_probe_description">MFIX קוראת את מבנה המסך של יש חשבונית לצורך התאמת מילוי אוטומטי. הנתונים נשמרים מקומית במכשיר.</string>
+</resources>
