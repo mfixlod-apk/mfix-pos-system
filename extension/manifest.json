@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "MFIX Touch POS for Yesh Invoice",
+  "version": "0.1.0",
+  "description": "ממשק קופה במסך מגע מעל אתר יש חשבונית, עם אפשרות לחזור לממשק המקורי.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://user.yeshinvoice.co.il/*",
+    "https://*.yeshinvoice.co.il/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://user.yeshinvoice.co.il/*",
+        "https://*.yeshinvoice.co.il/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "pos.html",
+        "pos.css",
+        "pos.js"
+      ],
+      "matches": [
+        "https://user.yeshinvoice.co.il/*",
+        "https://*.yeshinvoice.co.il/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "MFIX Touch POS"
+  }
+}
